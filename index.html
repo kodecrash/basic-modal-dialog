@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Basic Modal Dialog Example</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+
+        function openModal(modalId) {
+            $('#'+ modalId).show();
+            $('.modal-overlay').show();
+        }
+
+        function closeModal(modalId) {
+            var modal = $('#'+ modalId);
+            if (modal && modal.length > 0) {
+                modal.find('.close').off('click').on('click', function() {
+                    modal.hide();
+                    $('.modal-overlay').hide();
+                });
+            }
+        }
+
+        $(document).ready(function() {
+
+            $('#modalBtn').click(function() {
+                openModal('modal-dialog');
+            });
+            closeModal('modal-dialog');
+
+        });
+
+    </script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .modal-overlay {
+            background-color: #333;
+            opacity: 0.5;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+            overflow: auto;
+            z-index: 100;
+            display: none;
+        }
+
+        .modal-box {
+            width: 500px;
+            min-width: 400px;
+            position: relative;
+            z-index: 1000;
+            background: #fff;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .modal-box>.modal-header {
+            font-size: 20px;
+            background: #ccc;
+            font-family: sans-serif;
+            padding: 10px;
+        }
+
+        .modal-box>.modal-header span.close {
+            color: #333;
+            font-size: 15px;
+            font-weight: bold;
+            position: absolute;
+            right: 16px;
+            font-family: cursive;
+            cursor: pointer;
+        }
+
+        .modal-box>.modal-body {
+            font-family: sans-serif;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Basic Modal dialog example</h2>
+
+    <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+
+        <button id="modalBtn">Open Modal Dialog</button>
+    </p>
+
+    <div class="modal-overlay"></div>
+    <div id="modal-dialog" class="modal-box">
+        <div class="modal-header">
+            Success !!!
+            <span class="close">X</span>
+        </div>
+        <div class="modal-body">
+            <p>
+                User registerd successfully.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>
